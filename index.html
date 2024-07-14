@@ -1,1 +1,153 @@
-<h1> Documentation of machine_learning </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning in Rust - Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            font-size: 16px;
+            color: #c7254e;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Machine Learning in Rust</h1>
+            <ul>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#linear-regression">Linear Regression</a></li>
+                <li><a href="#contributing">Contributing</a></li>
+                <li><a href="#license">License</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container main">
+        <section id="installation">
+            <h2>Installation</h2>
+            <p>To use this library in your Rust project, add the following line to your <code>Cargo.toml</code> file:</p>
+            <pre>
+                [dependencies]
+                machine_learning = "0.1.0"
+            </pre>
+        </section>
+
+        <section id="usage">
+            <h2>Usage</h2>
+            <p>For detailed documentation on how to use this library and to stay updated with the latest algorithms and methods being added, please visit <a href="https://docs.mllibrary.com">docs.mllibrary.com</a>.</p>
+        </section>
+
+        <section id="linear-regression">
+            <h2>Linear Regression</h2>
+            <p>The library currently includes an implementation of linear regression. Here is a sample usage:</p>
+            <pre><code>
+use machine_learning::linreg::LinearRegression;
+
+fn main() {
+    let x = vec![1.0, 2.0, 3.0, 4.0, 5.0];
+    let y = vec![2.0, 4.0, 5.0, 4.0, 5.0];
+
+    let mut model = LinearRegression::new();
+    match model.fit(&x, &y) {
+        Ok(_) => {
+            let prediction = model.predict(6.0);
+            println!("Prediction for x=6.0: {}", prediction);
+
+            let r_squared = model.get_r_squared();
+            println!("R²: {}", r_squared);
+
+            let residuals = model.get_residuals();
+            println!("Residuals: {:?}", residuals);
+
+            let mse = model.mean_squared_error();
+            println!("Mean Squared Error: {}", mse);
+
+            let rmse = model.root_mean_squared_error();
+            println!("Root Mean Squared Error: {}", rmse);
+        }
+        Err(e) => println!("Error: {}", e),
+    }
+}
+            </code></pre>
+            <p>More algorithms and methods will be added regularly. Check the documentation site for updates.</p>
+        </section>
+
+        <section id="contributing">
+            <h2>Contributing</h2>
+            <p>Contributions are welcome! Feel free to open an issue or submit a pull request. Your feedback and contributions are highly appreciated.</p>
+        </section>
+
+        <section id="license">
+            <h2>License</h2>
+            <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Isaka Philipo Nkolima. All rights reserved.</p>
+    </footer>
+</body>
+</html>
