@@ -91,7 +91,7 @@
             <p>To use this library in your Rust project, add the following line to your <code>Cargo.toml</code> file:</p>
             <pre>
                 [dependencies]
-                machine_learning = "0.1.0"
+                machine_learning = "0.1.1"
             </pre>
         </section>
 
@@ -134,6 +134,46 @@ fn main() {
             </code></pre>
             <p>More algorithms and methods will be added regularly. Check the documentation site for updates.</p>
         </section>
+
+  <section id="logistic-regression">
+    <h2>Logistic Regression</h2>
+    <p>The library currently includes an implementation of logistic regression. Here is a sample usage:</p>
+    <pre><code>
+use machine_learning::logisticreg::LogisticRegression;
+
+fn main() {
+    // Sample data
+    let xlarge = vec![
+        vec![2.0],
+        vec![3.0],
+        vec![5.0],
+        vec![6.0],
+        vec![7.0],
+        vec![10.0],
+        vec![12.0],
+        vec![14.0],
+        vec![15.0]
+    ];
+
+    let y = vec![0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+
+    // Create and train the logistic regression model
+    let mut model = LogisticRegression::new(1);
+    model.fit(&xlarge, &y, 0.1, 1000);
+
+    // Predict probability of passing for a student who studies 8 hours
+    let new_data = vec![vec![8.0]];
+    let predicted_prob = model.predict_proba(&new_data);
+    println!("Predicted probability of passing: {}", predicted_prob[0]);
+
+    // Predict class
+    let predicted_class = model.predict(&new_data);
+    println!("Predicted class: {}", predicted_class[0]);
+}
+    </code></pre>
+    <p>More algorithms and methods will be added regularly. Check the documentation site for updates.</p>
+</section>
+
 
         <section id="contributing">
             <h2>Contributing</h2>
